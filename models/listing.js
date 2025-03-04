@@ -9,8 +9,8 @@ const listingSchema = new Schema({
     description: String,
     image: { 
         type: Object,
-        default: "https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        set: (v) => v === "" ? "https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        default: {url: "https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+        set: (v) => v === "" ? {url:"https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
          : v,  
      },
 
