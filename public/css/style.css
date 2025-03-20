@@ -102,3 +102,8 @@ body{
 .btns{
     display: flex;
 }
+
+.listing-card{
+    border: 1px solid black !important;
+    border-radius: 1rem;
+}
