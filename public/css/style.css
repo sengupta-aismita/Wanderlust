@@ -104,6 +104,6 @@ body{
 }
 
 .listing-card{
-    border: 1px solid black !important;
+    border: 0.5px solid black !important;
     border-radius: 1rem;
 }
