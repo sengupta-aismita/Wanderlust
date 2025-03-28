@@ -1,10 +1,14 @@
 <% layout('/layouts/boilerplate') -%>
+<script>
+  const mapToken = "<%=process.env.MAP_TOKEN%>";
+  const listing = <%-JSON.stringify(listing)%>;
+</script>
 <div class="row offset-2 mt-3">
     <h3><b><%=listing.title%></b></h3>
    </div>
 
     <div class="card col-6 offset-3" >
-        <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image">
+        <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
         <div class="card-body">
           <p class="card-text">
             <i>Owned by <b><%=listing.owner.username%></b></i>
@@ -33,10 +37,27 @@
   <div>
     <h4 class=" offset-2">Leave a Review</h4>
     <form class="card col-6 offset-3 needs-validation" action="/listings/<%=listing._id%>/reviews" method="post" novalidate >
-      <div>
+      <!--<div>
         <label for="rating" class="form-label">Rating</label>
         <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" >
+      </div>-->
+      <div>
+        <label for="rating" class="form-label">Rating</label>
+        <fieldset class="starability-slot">
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
       </div>
+      
        <div>
         <label for="comment" class="form-label">Comments</label>
         <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
@@ -46,6 +67,7 @@
     </form>
     <%}%>
     <hr>
+    <% if(listing.reviews.length>0) {%>
     <div class="offset-2 mt-3">
       <p><b>All Reviews</b></p>
       <div class="row">
@@ -55,10 +77,14 @@
             <div class="card-body">
               <h5 class="card-title">@<%=review.author.username%></h5>
               <p class="card-text"><%=review.comment%></p>
-              <p class="card-text"><%=review.rating%> stars</p>
+              <p class="starability-result card-text" data-rating="<%=review.rating%>">
+                Rated: 3 stars
+              </p>
+              <% if(currUser && review.author._id.equals(currUser._id)) { %>  
               <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
                 <button class="btn btn-dark  mb-3">Delete</button>
               </form>
+              <%}%>
             </div>
           </div>
             <%}%> 
@@ -66,10 +92,19 @@
 
       
     </div>
-  
+    <hr>
+  <%}%>
+
+  <div class="offset-2  mt-3 mb-3">
+     <h3>Where you'll be</h3>
+     <div id="map"></div>
+  </div>
+
     
      
   </div>
 </div>
+
+<script src="/js/map.js"></script>
 
 

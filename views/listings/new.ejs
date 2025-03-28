@@ -1,9 +1,14 @@
 <% layout('/layouts/boilerplate') -%>
 <div class="row mt-3">
   <div class="col-8 offset-2">
-    
-    <h3>Create a new Listing</h3>
-    <form method="POST" action="/listings" class="needs-validation" novalidate>
+    <h3>Create your new Home</h3>
+    <form
+      method="POST"
+      action="/listings"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -13,26 +18,26 @@
           class="form-control"
           required
         />
-        <div class="valid-feedback">
-          Title looks good!
-        </div>
+        <div class="valid-feedback">Title looks good!</div>
       </div>
 
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control" required></textarea>
-        <div class="invalid-feedback">
-          Please enter a short description
-        </div>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please enter a short description</div>
       </div>
 
       <div class="mb-3">
-        <label for="image" class="form-label">Image Link</label>
+        <label for="image" class="form-label">Upload Image</label>
         <input
           name="listing[image]"
-          placeholder="Enter image URL/Link"
-          type="text"
+          type="file"
           class="form-control"
+          required
         />
       </div>
 
@@ -44,9 +49,7 @@
           class="form-control"
           required
         />
-        <div class="invalid-feedback">
-          Please enter a valid price
-        </div>
+        <div class="invalid-feedback">Please enter a valid price</div>
       </div>
 
       <div class="mb-3">
@@ -58,9 +61,7 @@
           class="form-control"
           required
         />
-        <div class="invalid-feedback">
-          Please enter the proper location
-        </div>
+        <div class="invalid-feedback">Please enter the proper location</div>
       </div>
 
       <div class="mb-3">
@@ -72,11 +73,8 @@
           class="form-control"
           required
         />
-        <div class="invalid-feedback">
-          Please enter the country name
-        </div>
+        <div class="invalid-feedback">Please enter the country name</div>
       </div>
-      
 
       <button class="btn btn-dark mb-2 mt-3 add-btn">Add</button>
     </form>
