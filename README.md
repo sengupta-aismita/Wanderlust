@@ -3,6 +3,7 @@ Wanderlust is a full-stack web application inspired by Airbnb, designed to help 
 
 🔹 Key Features:
 ✔ User Authentication & Authorization (Signup/Login)
+✔ REST APIs for handling hotel listings, reviews, and user data
 ✔ Form Validation & Flash Messages for better UX
 ✔ Hotel Listings with Detailed Descriptions & Pricing
 ✔ Interactive Maps (Mapbox) to Show Exact Locations
