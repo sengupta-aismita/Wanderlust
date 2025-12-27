@@ -40,15 +40,19 @@
           </div>
         </nav>
 
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Create your home</a>
-          <% if(!currUser){ %>
-          <a class="nav-link active"  href="/signup"><b>Sign Up</b></a>
-          <a class="nav-link" href="/login"><b>Login</b></a>
-          <% } %> <% if(currUser) { %>
-          <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
-         <% }%>
-        </div>
+        <<div class="navbar-nav ms-auto">
+  <a class="nav-link" href="/listings/new">Create your home</a>
+
+  <% if (currUser) { %>
+    <a class="nav-link" href="/logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </a>
+  <% } else { %>
+    <a class="nav-link active" href="/signup"><b>Sign Up</b></a>
+    <a class="nav-link" href="/login"><b>Login</b></a>
+  <% } %>
+</div>
+
       </div>
     </div>
   </nav>
